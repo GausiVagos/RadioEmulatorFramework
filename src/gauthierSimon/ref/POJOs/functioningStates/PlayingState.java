@@ -13,45 +13,35 @@ public class PlayingState implements IState {
 
 	@Override
 	public boolean turnOn() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean start() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean pause() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean resume() {
-		// TODO Auto-generated method stub
-		return false;
+		context.changeState(States.paused);
+		return true;
 	}
 
 	@Override
 	public boolean turnOff() {
-		// TODO Auto-generated method stub
-		return false;
+		context.changeState(States.off);
+		return true;
 	}
 
 	@Override
 	public boolean breakComponent() {
-		// TODO Auto-generated method stub
-		return false;
-		
+		context.changeState(States.broken);
+		return true;
 	}
 
 	@Override
 	public boolean repairComponent() {
-		// TODO Auto-generated method stub
 		return false;
-		
 	}
+
 }

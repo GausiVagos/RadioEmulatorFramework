@@ -4,6 +4,8 @@ import gauthierSimon.ref.POJOs.physicalComponents.RadioComponent;
 
 public class OnState implements IState {
 
+	// OnState : displaying hour, etc, but not actually playing music.
+	
 	RadioComponent context;
 	
 	public OnState(RadioComponent context) {
@@ -13,46 +15,35 @@ public class OnState implements IState {
 
 	@Override
 	public boolean turnOn() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean start() {
-		// TODO Auto-generated method stub
-		return false;
+		context.changeState(States.playing);
+		return true;
 	}
 
 	@Override
 	public boolean pause() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean resume() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean turnOff() {
-		// TODO Auto-generated method stub
-		return false;
+		context.changeState(States.off);
+		return true;
 	}
 
 	@Override
 	public boolean breakComponent() {
-		// TODO Auto-generated method stub
-		return false;
-		
+		context.changeState(States.broken);
+		return true;
 	}
 
 	@Override
 	public boolean repairComponent() {
-		// TODO Auto-generated method stub
 		return false;
-		
 	}
 
 }
