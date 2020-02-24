@@ -23,20 +23,17 @@ public class PlayingState implements IState {
 
 	@Override
 	public boolean pause() {
-		context.changeState(States.paused);
-		return true;
+		return context.changeState(States.paused);
 	}
 
 	@Override
 	public boolean turnOff() {
-		context.changeState(States.off);
-		return true;
+		return context.changeState(States.off);
 	}
 
 	@Override
 	public boolean breakComponent() {
-		context.changeState(States.broken);
-		return true;
+		return context.changeState(States.broken);
 	}
 
 	@Override
