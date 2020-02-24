@@ -42,8 +42,7 @@ public class BrokenState implements IState {
 
 	@Override
 	public boolean repairComponent() {
-		context.changeState(States.off);
-		return true;
+		return context.changeState(States.off);
 	}
 
 }
