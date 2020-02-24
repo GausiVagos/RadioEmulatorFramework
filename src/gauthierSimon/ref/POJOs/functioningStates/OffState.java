@@ -13,8 +13,7 @@ public class OffState implements IState {
 
 	@Override
 	public boolean turnOn() {
-		context.changeState(States.on);
-		return true;
+		return context.changeState(States.on);
 	}
 
 	@Override
@@ -34,8 +33,7 @@ public class OffState implements IState {
 
 	@Override
 	public boolean breakComponent() {
-		context.changeState(States.broken);
-		return true;
+		return context.changeState(States.broken);
 	}
 
 	@Override
