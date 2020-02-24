@@ -23,7 +23,7 @@ public class Speaker extends RadioComponent
 	
 	@Override
 	public boolean start() {
-		if(super.start() && enumState == States.playing) // if the state has changed && was set to "playing"
+		if(super.start()) // if the state has changed & was set to "playing"
 		{
 			//TODO visual/textual representation
 			// start music at maxVolume*currentVolume
@@ -34,7 +34,7 @@ public class Speaker extends RadioComponent
 
 	@Override
 	public boolean pause() {
-		if(super.pause() && enumState == States.paused)
+		if(super.pause())
 		{
 			//TODO
 			// pause music
@@ -45,7 +45,7 @@ public class Speaker extends RadioComponent
 
 	@Override
 	public boolean turnOff() {
-		if(super.turnOff() && enumState == States.off)
+		if(super.turnOff())
 		{
 			//TODO
 			// stop music
@@ -56,7 +56,7 @@ public class Speaker extends RadioComponent
 
 	@Override
 	public boolean breakComponent() {
-		if(super.breakComponent() && enumState == States.broken)
+		if(super.breakComponent())
 		{
 			//TODO
 			// stop music
