@@ -44,7 +44,7 @@ public class Antenna extends RadioComponent
 
 	@Override
 	public boolean turnOn() {
-		if(super.turnOn() && enumState == States.on)
+		if(super.turnOn())
 		{
 			//TODO the antenna get the "online" content
 			//captableObjects == 
@@ -56,7 +56,7 @@ public class Antenna extends RadioComponent
 
 	@Override
 	public boolean start() {
-		if(super.start() && enumState == States.playing)
+		if(super.start())
 		{
 			Object sound = captableObjects.get(currentFrequency);
 			if(sound!=null)
@@ -75,7 +75,7 @@ public class Antenna extends RadioComponent
 
 	@Override
 	public boolean breakComponent() {
-		if(super.breakComponent() && enumState == States.broken)
+		if(super.breakComponent())
 		{
 			//DO SOMETHING (stop speakers?)
 			return true;
