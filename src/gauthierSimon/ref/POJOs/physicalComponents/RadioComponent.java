@@ -36,7 +36,7 @@ public abstract class RadioComponent implements IState
 		enumState = States.off;
 	}
 	
-	public void changeState(States newState)
+	public boolean changeState(States newState)
 	{
 		switch(newState)
 		{
@@ -56,6 +56,7 @@ public abstract class RadioComponent implements IState
 			message = componentName.concat(" broke!");
 			break;
 		}
+		return true;
 	}
 	
 	@Override
