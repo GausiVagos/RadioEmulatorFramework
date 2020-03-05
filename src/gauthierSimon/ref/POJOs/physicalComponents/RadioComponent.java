@@ -11,6 +11,8 @@ import gauthierSimon.ref.POJOs.functioningStates.States;
 
 public abstract class RadioComponent implements IState
 {
+	Radio radio;
+	
 	IState state; // State design pattern
 	OffState off;
 	OnState on;
@@ -20,17 +22,16 @@ public abstract class RadioComponent implements IState
 	
 	String componentName;
 	protected States enumState; // to get quickly the current state without having to analyze the class of the IState attribute.
-	String message;
 	
 	
-	public RadioComponent(String name)
-	{
-		componentName = name;
-		off = new OffState(this);
-		on = new OnState(this);
-		paused = new PausedState(this);
-		playing = new PlayingState(this);
-		broken = new BrokenState(this);
+	public RadioComponent(Radio radio, String name)
+	{	
+		this.radio = radio;
+		off = radio.getOff();
+		on = radio.getOn();
+		paused = radio.getPaused();
+		playing = radio.getPlaying();
+		broken = radio.getBroken();
 		
 		state = off;
 		enumState = States.off;
@@ -38,55 +39,62 @@ public abstract class RadioComponent implements IState
 	
 	public boolean changeState(States newState)
 	{
+		String message;
+		
 		switch(newState)
 		{
 			case off:	state = off;
-			message = componentName.concat(" stopped.");
-			break;
+						message = componentName.concat(" stopped.");
+						break;
 			case on: 	state = on;
-			message = componentName.concat(" started.");
-			break;
+						message = componentName.concat(" started.");
+						break;
 			case paused:	state = paused;
-			message = componentName.concat(" was paused.");
-			break;
+							message = componentName.concat(" was paused.");
+							break;
 			case playing:	state = playing;
-			message = componentName.concat(" started playing.");
-			break;
+							message = componentName.concat(" started playing.");
+							break;
 			case broken:	state = broken;
-			message = componentName.concat(" broke!");
-			break;
+							message = componentName.concat(" broke!");
+							break;
+			default :	message = "Something went wrong with ".concat(componentName);
+						radio.addLog(message);
+						return false;
 		}
+		
+		radio.addLog(message);
 		return true;
 	}
 	
 	@Override
 	public boolean turnOn() {
-		return state.turnOn();
+		return state.turnOn()? changeState(States.on) : false;
 	}
 
 	@Override
 	public boolean start() {
-		return state.start();
+		return state.start()? changeState(States.playing) : false;
 	}
 
 	@Override
 	public boolean pause() {
-		return state.pause();
+		return state.pause()? changeState(States.paused) : false;
 	}
 
 	@Override
 	public boolean turnOff() {
-		return state.turnOff();
+		return state.turnOff()? changeState(States.off) : false;
 	}
 
 	@Override
 	public boolean breakComponent() {
-		return state.breakComponent();
+		return state.breakComponent()? changeState(States.broken) : false;
 	}
 
 	@Override
 	public boolean repairComponent() {
-		return state.repairComponent();
+		return state.repairComponent()? changeState(States.off) : false;
 	}
 
 }

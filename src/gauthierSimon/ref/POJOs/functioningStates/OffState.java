@@ -1,19 +1,14 @@
 package gauthierSimon.ref.POJOs.functioningStates;
 
-import gauthierSimon.ref.POJOs.physicalComponents.RadioComponent;
-
 public class OffState implements IState {
 
-	RadioComponent context;
-	
-	public OffState(RadioComponent context) {
+	public OffState() {
 		super();
-		this.context = context;
 	}
 
 	@Override
 	public boolean turnOn() {
-		return context.changeState(States.on);
+		return true;
 	}
 
 	@Override
@@ -33,7 +28,7 @@ public class OffState implements IState {
 
 	@Override
 	public boolean breakComponent() {
-		return context.changeState(States.broken);
+		return true;
 	}
 
 	@Override

@@ -1,15 +1,9 @@
 package gauthierSimon.ref.POJOs.functioningStates;
 
-import gauthierSimon.ref.POJOs.physicalComponents.RadioComponent;
-
 public class BrokenState implements IState {
 
-	RadioComponent context;
-	
-	
-	public BrokenState(RadioComponent context) {
+	public BrokenState() {
 		super();
-		this.context = context;
 	}
 	
 	
@@ -42,7 +36,7 @@ public class BrokenState implements IState {
 
 	@Override
 	public boolean repairComponent() {
-		return context.changeState(States.off);
+		return true;
 	}
 
 }

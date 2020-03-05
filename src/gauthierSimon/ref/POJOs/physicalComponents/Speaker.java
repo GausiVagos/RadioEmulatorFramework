@@ -1,20 +1,18 @@
 package gauthierSimon.ref.POJOs.physicalComponents;
 
-import gauthierSimon.ref.POJOs.functioningStates.States;
-
 public class Speaker extends RadioComponent 
 {
 	int maxVolume;
 	float currentVolume; //between 0 and 1
 	
-	public Speaker(int mv)
+	public Speaker(Radio radio, int mv)
 	{
-		super("Speaker");
+		super(radio, "Speaker");
 		maxVolume = mv;
 	}
 	
-	public Speaker(String name, int mv) {
-		super(name);
+	public Speaker(Radio radio, String name, int mv) {
+		super(radio, name);
 		maxVolume = mv;
 	}
 	

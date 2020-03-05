@@ -10,34 +10,14 @@ public class Antenna extends RadioComponent
 	double currentFrequency;
 	Map<Double,Object> captableObjects;
 	
-
-	public double getCurrentFrequency() {
-		return currentFrequency;
-	}
-
-
-	public void setCurrentFrequency(double currentFrequency) {
-		this.currentFrequency = currentFrequency;
-	}
-
-
-	public Map<Double, Object> getCaptableObjects() {
-		return captableObjects;
-	}
-
-
-	public void setCaptableObjects(Map<Double, Object> captableObjects) {
-		this.captableObjects = captableObjects;
-	}
-
-	public Antenna() {
-		super("Antenna");
+	public Antenna(Radio radio) {
+		super(radio, "Antenna");
 		captableObjects = new HashMap<Double,Object>();
 	}
 
 
-	public Antenna(String name,Map<Double, Object> captableObjects) {
-		super(name);
+	public Antenna(Radio radio, String name,Map<Double, Object> captableObjects) {
+		super(radio, name);
 		this.captableObjects = captableObjects;
 	}
 
@@ -82,5 +62,25 @@ public class Antenna extends RadioComponent
 		}
 		return false;
 	}
+	
+	public double getCurrentFrequency() {
+		return currentFrequency;
+	}
+
+
+	public void setCurrentFrequency(double currentFrequency) {
+		this.currentFrequency = currentFrequency;
+	}
+
+
+	public Map<Double, Object> getCaptableObjects() {
+		return captableObjects;
+	}
+
+
+	public void setCaptableObjects(Map<Double, Object> captableObjects) {
+		this.captableObjects = captableObjects;
+	}
+
 
 }
